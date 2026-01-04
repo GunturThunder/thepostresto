@@ -161,9 +161,6 @@ a {
 }
 
 .cta-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   background: var(--ink);
@@ -182,9 +179,6 @@ a {
 }
 
 .cta-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   padding: 0.75rem 1.5rem;
   border-radius: 9999px;
   border: 1px solid var(--line);

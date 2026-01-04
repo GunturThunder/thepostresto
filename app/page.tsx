@@ -320,10 +320,17 @@ const MenuItemModal = ({
           </span>
         </div>
         <div className="flex flex-wrap gap-3">
-          <a className="cta-primary" href="mailto:info@thepostcafe.com">
+          <a
+            className="cta-primary inline-flex items-center justify-center"
+            href="mailto:info@thepostcafe.com"
+          >
             Book a Table
           </a>
-          <button type="button" className="cta-outline" onClick={onClose}>
+          <button
+            type="button"
+            className="cta-outline inline-flex items-center justify-center"
+            onClick={onClose}
+          >
             Close
           </button>
         </div>
@@ -334,6 +341,7 @@ const MenuItemModal = ({
 
 export default function Home() {
   const [activeItem, setActiveItem] = useState<MenuItem | null>(null);
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     if (!activeItem) {
@@ -362,6 +370,14 @@ export default function Home() {
 
   const handleCloseItem = () => {
     setActiveItem(null);
+  };
+
+  const handleNavToggle = () => {
+    setIsNavOpen((value) => !value);
+  };
+
+  const handleNavClose = () => {
+    setIsNavOpen(false);
   };
 
   return (
@@ -394,13 +410,82 @@ export default function Home() {
             <a className="transition hover:text-ink" href="#services">
               Services
             </a>
+            <a className="transition hover:text-ink" href="#gallery">
+              Gallery
+            </a>
             <a className="transition hover:text-ink" href="#visit">
               Visit
             </a>
           </nav>
-          <a className="cta-outline hidden lg:inline-flex" href="mailto:info@thepostcafe.com">
+          <a
+            className="cta-outline hidden items-center justify-center lg:inline-flex"
+            href="mailto:info@thepostcafe.com"
+          >
             Book a Table
           </a>
+          <button
+            type="button"
+            className="lg:hidden flex h-11 w-11 items-center justify-center rounded-full border border-line text-muted transition hover:border-ink hover:text-ink"
+            onClick={handleNavToggle}
+            aria-expanded={isNavOpen}
+            aria-controls="mobile-nav"
+            aria-label="Toggle navigation"
+          >
+            <span className="sr-only">Toggle navigation</span>
+            <span className="relative flex h-3 w-6 flex-col justify-between">
+              <span
+                className={`block h-px w-full bg-current transition duration-200 ${
+                  isNavOpen ? "translate-y-[5px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-full bg-current transition duration-200 ${
+                  isNavOpen ? "opacity-0" : ""
+                }`}
+              />
+              <span
+                className={`block h-px w-full bg-current transition duration-200 ${
+                  isNavOpen ? "-translate-y-[5px] -rotate-45" : ""
+                }`}
+              />
+            </span>
+          </button>
+        </div>
+        <div
+          id="mobile-nav"
+          className={`overflow-hidden border-t border-line bg-[rgba(244,239,230,0.95)] px-6 transition-all duration-300 ${
+            isNavOpen
+              ? "max-h-[420px] opacity-100 shadow-[0_18px_32px_rgba(47,42,36,0.12)]"
+              : "max-h-0 opacity-0 pointer-events-none"
+          }`}
+        >
+          <nav
+            className={`flex flex-col gap-4 pb-6 pt-4 text-xs uppercase tracking-[0.28em] text-muted transition ${
+              isNavOpen ? "translate-y-0" : "-translate-y-2"
+            }`}
+          >
+            <a className="transition hover:text-ink" href="#menu" onClick={handleNavClose}>
+              Menu
+            </a>
+            <a className="transition hover:text-ink" href="#signature" onClick={handleNavClose}>
+              Signature
+            </a>
+            <a className="transition hover:text-ink" href="#breakfast" onClick={handleNavClose}>
+              Breakfast
+            </a>
+            <a className="transition hover:text-ink" href="#dessert" onClick={handleNavClose}>
+              Dessert
+            </a>
+            <a className="transition hover:text-ink" href="#services" onClick={handleNavClose}>
+              Services
+            </a>
+            <a className="transition hover:text-ink" href="#gallery" onClick={handleNavClose}>
+              Gallery
+            </a>
+            <a className="transition hover:text-ink" href="#visit" onClick={handleNavClose}>
+              Visit
+            </a>
+          </nav>
         </div>
       </header>
 
@@ -421,10 +506,16 @@ export default function Home() {
                 lunch, dinner, or a late coffee.
               </p>
               <div className="flex flex-wrap gap-4">
-                <a className="cta-primary" href="#menu">
+                <a
+                  className="cta-primary inline-flex items-center justify-center"
+                  href="#menu"
+                >
                   Explore Menu
                 </a>
-                <a className="cta-outline" href="mailto:info@thepostcafe.com">
+                <a
+                  className="cta-outline inline-flex items-center justify-center"
+                  href="mailto:info@thepostcafe.com"
+                >
                   Book a Table
                 </a>
               </div>
@@ -684,11 +775,14 @@ export default function Home() {
                 </p>
               </div>
               <div className="mt-6 flex flex-wrap gap-4">
-                <a className="cta-primary" href="mailto:info@thepostcafe.com">
+                <a
+                  className="cta-primary inline-flex items-center justify-center"
+                  href="mailto:info@thepostcafe.com"
+                >
                   Make a Booking
                 </a>
                 <a
-                  className="cta-outline"
+                  className="cta-outline inline-flex items-center justify-center"
                   href="https://instagram.com/thepost_id"
                   target="_blank"
                   rel="noreferrer"
